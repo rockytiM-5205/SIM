@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — SIM</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  .view-row{ display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); font-size:14px; text-align:left; }
+  .view-row:last-child{ border-bottom:none; }
+  .view-row span{ color:var(--ink-400); flex-shrink:0; }
+  .view-row strong{ text-align:right; }
+  .view-row.full{ flex-direction:column; gap:6px; }
+  .view-row.full p{ color:var(--ink-900); font-size:14px; }
+  .modal-box.view-box{ max-width:480px; text-align:left; }
+  .modal-box.view-box .modal-icon{ margin:0 0 4px; }
+</style>
+</head>
+<body data-page="dashboard">
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><i class="fa-solid fa-location-crosshairs"></i></span>
+      <span>SIM<small>Incident Mapping</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="report.html" data-page="report">Report Incident</a>
+      <a href="reports.html" data-page="reports">My Reports</a>
+      <a href="safety.html" data-page="safety">Safety Tips</a>
+      <a href="dashboard.html" data-page="dashboard" class="nav-cta">Admin Dashboard</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<header class="page-head grid-field on-navy">
+  <div class="container">
+    <p class="eyebrow" style="color:var(--sky-400)"><i class="fa-solid fa-gauge-high" style="color:var(--sky-400)"></i>Response center</p>
+    <h1>Admin Dashboard</h1>
+    <p>Monitor every incident reported campus-wide and move each one from Pending to Resolved.</p>
+  </div>
+</header>
+
+<section class="table-wrap">
+  <div class="container" style="padding-top:44px;">
+
+    <div class="stat-grid">
+      <div class="stat-card total">
+        <div class="stat-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div><div class="num" id="stat-total">0</div><div class="label">Total Reports</div></div>
+      </div>
+      <div class="stat-card pending">
+        <div class="stat-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+        <div><div class="num" id="stat-pending">0</div><div class="label">Pending</div></div>
+      </div>
+      <div class="stat-card investigating">
+        <div class="stat-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div><div class="num" id="stat-investigating">0</div><div class="label">Investigating</div></div>
+      </div>
+      <div class="stat-card resolved">
+        <div class="stat-icon"><i class="fa-solid fa-check-double"></i></div>
+        <div><div class="num" id="stat-resolved">0</div><div class="label">Resolved</div></div>
+      </div>
+    </div>
+
+    <div class="table-toolbar">
+      <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="admin-search" placeholder="Search by ID, reporter, incident or location...">
+      </div>
+      <select class="filter-select" id="admin-filter">
+        <option value="">All statuses</option>
+        <option value="Pending">Pending</option>
+        <option value="Investigating">Investigating</option>
+        <option value="Resolved">Resolved</option>
+      </select>
+    </div>
+
+    <div class="data-card" id="admin-table-card">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Report ID</th>
+            <th>Reporter</th>
+            <th>Incident</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="admin-reports-body"></tbody>
+      </table>
+    </div>
+
+    <div class="data-card empty-state" id="admin-empty" style="display:none;">
+      <div class="empty-icon"><i class="fa-solid fa-shield"></i></div>
+      <h3>No reports to review</h3>
+      <p>When students, staff or residents submit incident reports, they'll appear here for triage.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="modal-overlay" id="view-modal">
+  <div class="modal-box view-box">
+    <div class="modal-icon"><i class="fa-solid fa-file-lines"></i></div>
+    <h3>Report <span class="view-id" style="color:var(--blue-600); font-family:var(--font-mono);">SIM-0000</span></h3>
+    <div class="view-body" style="margin:14px 0 20px;"></div>
+    <button class="btn btn-outline btn-block" data-close-modal>Close</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 SIM — Security Incident Mapping System.</span>
+      <span>Software Engineering Coursework Project</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const search = document.getElementById('admin-search');
+    const filter = document.getElementById('admin-filter');
+
+    function applyFilters() {
+      const q = (search.value || '').trim().toLowerCase();
+      const status = filter.value;
+      document.querySelectorAll('#admin-reports-body tr').forEach(row => {
+        const matchesText = row.textContent.toLowerCase().includes(q);
+        const matchesStatus = !status || row.textContent.includes(status);
+        row.style.display = (matchesText && matchesStatus) ? '' : 'none';
+      });
+    }
+
+    if (search) search.addEventListener('input', applyFilters);
+    if (filter) filter.addEventListener('change', applyFilters);
+
+    // Re-apply filters after any dashboard re-render (status change / delete)
+    const observer = new MutationObserver(applyFilters);
+    const tbody = document.getElementById('admin-reports-body');
+    if (tbody) observer.observe(tbody, { childList: true });
+  });
+</script>
+</body>
+</html>

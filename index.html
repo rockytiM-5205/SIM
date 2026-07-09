@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIM — Security Incident Mapping System</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-page="home">
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><i class="fa-solid fa-location-crosshairs"></i></span>
+      <span>SIM<small>Incident Mapping</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="report.html" data-page="report">Report Incident</a>
+      <a href="reports.html" data-page="reports">My Reports</a>
+      <a href="safety.html" data-page="safety">Safety Tips</a>
+      <a href="dashboard.html" data-page="dashboard" class="nav-cta">Admin Dashboard</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<header class="hero grid-field on-navy">
+  <div class="container hero-inner">
+    <p class="eyebrow" style="color:var(--sky-400)"><i class="fa-solid fa-satellite-dish" style="color:var(--sky-400)"></i>Campus Safety Network</p>
+    <h1>Security Incident <span>Mapping</span> System</h1>
+    <p>SIM lets students, staff, landlords and villa residents report security incidents around campus in seconds — so response teams can act fast, and everyone stays informed.</p>
+    <div class="hero-actions">
+      <a href="report.html" class="btn btn-primary"><i class="fa-solid fa-triangle-exclamation"></i> Report Incident</a>
+      <a href="#why-sim" class="btn btn-ghost-navy"><i class="fa-solid fa-circle-info"></i> Learn More</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong id="hero-total">0</strong><span>Reports logged</span></div>
+      <div><strong>24/7</strong><span>Response monitoring</span></div>
+      <div><strong>3</strong><span>Emergency lines</span></div>
+    </div>
+  </div>
+  <div class="radar" aria-hidden="true">
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-dot" style="top:38%; left:52%;"></div>
+    <div class="radar-dot" style="top:60%; left:30%; animation-delay:.6s;"></div>
+    <div class="radar-dot" style="top:24%; left:22%; animation-delay:1.2s;"></div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2>Reporting made effortless</h2>
+      <p>Three simple pillars keep the whole campus community connected and protected.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+        <h3>Easy Reporting</h3>
+        <p>A guided form captures exactly what responders need — incident type, location, time and description — in under a minute.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h3>Fast Response</h3>
+        <p>Every report reaches the admin dashboard instantly, so security teams can triage and act without delay.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-people-roof"></i></div>
+        <h3>Community Safety</h3>
+        <p>Shared visibility into incident status keeps residents, staff and students informed and looking out for one another.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section grid-field" id="why-sim">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <p class="eyebrow">Why SIM</p>
+        <h2 style="font-size:clamp(26px,3.4vw,34px); font-weight:700; margin:12px 0 26px;">Built for how campuses actually respond to incidents</h2>
+        <ul class="why-list">
+          <li>
+            <span class="why-num">01</span>
+            <div><h4>Structured, not scattered</h4><p>Reports arrive in one consistent format instead of scattered calls, texts and rumors.</p></div>
+          </li>
+          <li>
+            <span class="why-num">02</span>
+            <div><h4>Status you can track</h4><p>Every report moves visibly from Pending → Investigating → Resolved, so nothing goes silent.</p></div>
+          </li>
+          <li>
+            <span class="why-num">03</span>
+            <div><h4>Built for everyone on campus</h4><p>Students, staff, landlords and villa residents all report through the same trusted channel.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="why-visual">
+        <div class="grid-field on-navy"></div>
+        <div class="why-visual-content">
+          <p class="eyebrow" style="color:var(--sky-400)">Live snapshot</p>
+          <div class="big-stat" id="why-total">0</div>
+          <p>Incidents mapped and tracked across campus since reporting began.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">In an emergency</p>
+      <h2>Emergency contacts</h2>
+      <p>Save these numbers — SIM complements direct calls, it doesn't replace them in a live emergency.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card security">
+        <div class="icon-circle"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Campus Security</h3>
+        <div class="num">0800-SIM-HELP</div>
+        <p>On-duty security desk, available around the clock.</p>
+      </div>
+      <div class="contact-card police">
+        <div class="icon-circle"><i class="fa-solid fa-building-shield"></i></div>
+        <h3>Police</h3>
+        <div class="num">112</div>
+        <p>Nearest police division for immediate law enforcement response.</p>
+      </div>
+      <div class="contact-card medical">
+        <div class="icon-circle"><i class="fa-solid fa-truck-medical"></i></div>
+        <h3>Medical Emergency</h3>
+        <div class="num">199</div>
+        <p>Campus clinic and ambulance dispatch for medical emergencies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><i class="fa-solid fa-location-crosshairs"></i></span>
+          <span>SIM</span>
+        </a>
+        <p>Making campus safer through smart incident reporting — built for students, staff and residents alike.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <a href="index.html">Home</a>
+          <a href="report.html">Report Incident</a>
+          <a href="reports.html">My Reports</a>
+        </div>
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <a href="safety.html">Safety Tips</a>
+          <a href="dashboard.html">Admin Dashboard</a>
+        </div>
+        <div class="footer-col">
+          <h5>Emergency</h5>
+          <a href="#">Campus Security</a>
+          <a href="#">Police · 112</a>
+          <a href="#">Medical · 199</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SIM — Security Incident Mapping System.</span>
+      <span>Software Engineering Coursework Project</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const total = SIM.getStats().total;
+    const heroTotal = document.getElementById('hero-total');
+    const whyTotal = document.getElementById('why-total');
+    if (heroTotal) heroTotal.textContent = total;
+    if (whyTotal) whyTotal.textContent = total;
+  });
+</script>
+</body>
+</html>

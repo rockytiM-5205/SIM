@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Reports — SIM</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-page="reports">
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><i class="fa-solid fa-location-crosshairs"></i></span>
+      <span>SIM<small>Incident Mapping</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="report.html" data-page="report">Report Incident</a>
+      <a href="reports.html" data-page="reports">My Reports</a>
+      <a href="safety.html" data-page="safety">Safety Tips</a>
+      <a href="dashboard.html" data-page="dashboard" class="nav-cta">Admin Dashboard</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<header class="page-head grid-field on-navy">
+  <div class="container">
+    <p class="eyebrow" style="color:var(--sky-400)"><i class="fa-solid fa-clipboard-list" style="color:var(--sky-400)"></i>Your activity</p>
+    <h1>My Reports</h1>
+    <p>Every incident you've submitted, with live status pulled straight from this device's records.</p>
+  </div>
+</header>
+
+<section class="table-wrap">
+  <div class="container" style="padding-top:44px;">
+
+    <div class="table-toolbar">
+      <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="reports-search" placeholder="Search by ID, incident or location...">
+      </div>
+      <a href="report.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> New Report</a>
+    </div>
+
+    <div class="data-card" id="reports-table-card">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Report ID</th>
+            <th>Incident</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="my-reports-body"></tbody>
+      </table>
+    </div>
+
+    <div class="data-card empty-state" id="reports-empty" style="display:none;">
+      <div class="empty-icon"><i class="fa-solid fa-inbox"></i></div>
+      <h3>No reports submitted yet</h3>
+      <p>Once you submit an incident report, it will show up here with its live status.</p>
+      <a href="report.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Report Your First Incident</a>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 SIM — Security Incident Mapping System.</span>
+      <span>Software Engineering Coursework Project</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const search = document.getElementById('reports-search');
+    if (search) {
+      search.addEventListener('input', () => {
+        const q = search.value.trim().toLowerCase();
+        document.querySelectorAll('#my-reports-body tr').forEach(row => {
+          row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+        });
+      });
+    }
+  });
+</script>
+</body>
+</html>

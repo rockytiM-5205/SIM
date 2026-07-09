@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report Incident — SIM</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-page="report">
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><i class="fa-solid fa-location-crosshairs"></i></span>
+      <span>SIM<small>Incident Mapping</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="report.html" data-page="report">Report Incident</a>
+      <a href="reports.html" data-page="reports">My Reports</a>
+      <a href="safety.html" data-page="safety">Safety Tips</a>
+      <a href="dashboard.html" data-page="dashboard" class="nav-cta">Admin Dashboard</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<header class="page-head grid-field on-navy">
+  <div class="container">
+    <p class="eyebrow" style="color:var(--sky-400)"><i class="fa-solid fa-file-pen" style="color:var(--sky-400)"></i>New report</p>
+    <h1>Report a Security Incident</h1>
+    <p>Fill in the details below as accurately as you can. Your report is saved instantly and given a tracking ID.</p>
+  </div>
+</header>
+
+<section class="form-wrap">
+  <div class="container">
+    <div class="form-shell">
+
+      <div class="form-card">
+        <h2>Incident details</h2>
+        <p>Fields marked <span style="color:var(--red-500)">*</span> are required.</p>
+
+        <form id="report-form" novalidate>
+
+          <div class="field-row">
+            <div class="field" data-field="fullName">
+              <label for="fullName">Full name <span class="req">*</span></label>
+              <input type="text" id="fullName" name="fullName" placeholder="e.g. Adaeze Okafor">
+              <span class="error-text">Please enter your full name.</span>
+            </div>
+            <div class="field" data-field="location">
+              <label for="location">Location <span class="req">*</span></label>
+              <input type="text" id="location" name="location" placeholder="e.g. Behind Faculty of Science">
+              <span class="error-text">Please enter where the incident happened.</span>
+            </div>
+          </div>
+
+          <div class="field" data-field="role">
+            <label>Role <span class="req">*</span></label>
+            <div class="role-picker">
+              <label class="chip-option">
+                <input type="radio" name="role" value="Student">
+                <span><i class="fa-solid fa-user-graduate"></i>Student</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="role" value="Staff">
+                <span><i class="fa-solid fa-briefcase"></i>Staff</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="role" value="Landlord">
+                <span><i class="fa-solid fa-house-chimney"></i>Landlord</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="role" value="Villa Resident">
+                <span><i class="fa-solid fa-building-user"></i>Villa Resident</span>
+              </label>
+            </div>
+            <span class="error-text">Please select your role.</span>
+          </div>
+
+          <div class="field" data-field="incidentType">
+            <label>Incident type <span class="req">*</span></label>
+            <div class="type-picker">
+              <label class="chip-option">
+                <input type="radio" name="incidentType" value="Theft">
+                <span><i class="fa-solid fa-mask"></i>Theft</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="incidentType" value="Robbery">
+                <span><i class="fa-solid fa-user-ninja"></i>Robbery</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="incidentType" value="Assault">
+                <span><i class="fa-solid fa-hand-fist"></i>Assault</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="incidentType" value="Cultism">
+                <span><i class="fa-solid fa-people-group"></i>Cultism</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="incidentType" value="Harassment">
+                <span><i class="fa-solid fa-triangle-exclamation"></i>Harassment</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="incidentType" value="Fire Outbreak">
+                <span><i class="fa-solid fa-fire"></i>Fire Outbreak</span>
+              </label>
+              <label class="chip-option">
+                <input type="radio" name="incidentType" value="Other">
+                <span><i class="fa-solid fa-circle-question"></i>Other</span>
+              </label>
+            </div>
+            <span class="error-text">Please select an incident type.</span>
+          </div>
+
+          <div class="field-row">
+            <div class="field" data-field="date">
+              <label for="date">Date <span class="req">*</span></label>
+              <input type="date" id="date" name="date">
+              <span class="error-text">Please select the date it happened.</span>
+            </div>
+            <div class="field" data-field="time">
+              <label for="time">Time <span class="req">*</span></label>
+              <input type="time" id="time" name="time">
+              <span class="error-text">Please select the approximate time.</span>
+            </div>
+          </div>
+
+          <div class="field" data-field="description">
+            <label for="description">Description <span class="req">*</span></label>
+            <textarea id="description" name="description" placeholder="Describe what happened, who was involved, and any other useful detail..."></textarea>
+            <span class="error-text">Please describe the incident.</span>
+          </div>
+
+          <div class="field">
+            <label>Upload image <span style="color:var(--ink-400); font-weight:400;">(optional)</span></label>
+            <div class="upload-box" id="upload-box">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <p>Click to upload a photo of the scene</p>
+              <span>PNG or JPG, up to 5MB · UI preview only</span>
+              <input type="file" id="image-upload" accept="image/*">
+            </div>
+            <div class="upload-filename" id="upload-filename"></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px; padding:16px;">
+            <i class="fa-solid fa-paper-plane"></i> Submit Report
+          </button>
+        </form>
+      </div>
+
+      <div class="form-side">
+        <div class="side-card">
+          <h4><i class="fa-solid fa-circle-info"></i> Before you submit</h4>
+          <ul>
+            <li><i class="fa-solid fa-check"></i>Be as specific as possible about the location.</li>
+            <li><i class="fa-solid fa-check"></i>Stick to facts you witnessed directly.</li>
+            <li><i class="fa-solid fa-check"></i>If you're in immediate danger, call emergency services first.</li>
+          </ul>
+        </div>
+        <div class="side-card navy">
+          <h4><i class="fa-solid fa-shield-halved" style="color:var(--sky-400)"></i> What happens next</h4>
+          <p>Your report is logged instantly with a tracking ID and appears on the admin dashboard as <strong>Pending</strong>. You can follow its progress under My Reports.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="success-modal">
+  <div class="modal-box">
+    <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
+    <h3>Report submitted successfully</h3>
+    <p>Your report has been submitted successfully. Reference this ID to track its status.</p>
+    <div class="modal-id">SIM-2026-0000</div>
+    <div style="display:flex; gap:12px;">
+      <a href="reports.html" class="btn btn-outline btn-block">View My Reports</a>
+      <button class="btn btn-primary btn-block" data-close-modal>Done</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
