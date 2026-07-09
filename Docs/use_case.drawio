@@ -1,0 +1,72 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Use-Case - SIM">
+    <mxGraphModel dx="900" dy="600" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- System boundary -->
+        <mxCell id="b1" value="SIM System (Security Incident Mapping)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;verticalAlign=top;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="600" height="620" as="geometry"/>
+        </mxCell>
+
+        <!-- Actors -->
+        <mxCell id="a1" value="Reporter / Villa Mate" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="70" y="150" width="50" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="a2" value="Security Administrator" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="420" width="50" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Use cases: reporter side -->
+        <mxCell id="u1" value="Submit Incident Report" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="90" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="u2" value="View Incident Feed" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="200" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="u3" value="View Threat Heatmap" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="310" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="u8" value="Manage Flagged Logs" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="450" width="190" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="u9" value="Update Status &amp; Route Notification" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="560" width="190" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Use cases: included / extending side -->
+        <mxCell id="u4" value="Choose Anonymity (mask identity)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="620" y="70" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="u5" value="Validate &amp; Timestamp Report" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="620" y="170" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="u6" value="Upload Media / Evidence" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="620" y="280" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="u7" value="Authenticate" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="620" y="490" width="180" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Associations (actor <-> use case): solid, no arrowhead -->
+        <mxCell id="e1" style="endArrow=none;html=1;" edge="1" parent="1" source="a1" target="u1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="endArrow=none;html=1;" edge="1" parent="1" source="a1" target="u2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="endArrow=none;html=1;" edge="1" parent="1" source="a1" target="u3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="endArrow=none;html=1;" edge="1" parent="1" source="a2" target="u8"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="endArrow=none;html=1;" edge="1" parent="1" source="a2" target="u9"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="endArrow=none;html=1;" edge="1" parent="1" source="a2" target="u3"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- <<include>>: base ..> included, dashed open arrow -->
+        <mxCell id="i1" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;dashed=1;html=1;fontSize=10;fontStyle=2;" edge="1" parent="1" source="u1" target="u4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="i2" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;dashed=1;html=1;fontSize=10;fontStyle=2;" edge="1" parent="1" source="u1" target="u5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="i3" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;dashed=1;html=1;fontSize=10;fontStyle=2;" edge="1" parent="1" source="u8" target="u7"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="i4" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;dashed=1;html=1;fontSize=10;fontStyle=2;" edge="1" parent="1" source="u9" target="u7"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- <<extend>>: extending ..> base, dashed open arrow -->
+        <mxCell id="x1" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;dashed=1;html=1;fontSize=10;fontStyle=2;" edge="1" parent="1" source="u6" target="u1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
